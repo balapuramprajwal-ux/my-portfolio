@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Predictor</title>
+
+    <style>
+        body{
+            margin: 0;
+            background: linear-gradient(to bottom right, #1e3c72, #2a5298);
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 30px;
+            height: 100vh;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1{
+            color: #ff4d4d;
+            margin-top: 40px;
+        }
+
+        label{
+            color: #ffd6e0;
+        }
+
+        input{
+            height: 35px;
+            width: 200px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: none;
+            padding: 5px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        button{
+            border-radius: 10px;
+            height: 35px;
+            width: 90px;
+            background-color: lightgreen;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        button:hover{
+            transform: translate(3px,3px);
+            box-shadow: 2px 2px 6px black;
+            background-color: #00ff99;
+        }
+
+        #result{
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Age Predictor</h1>
+
+    <label>Guess Age</label><br>
+    <input id="age" type="number" placeholder="Enter Age">
+    <br>
+    <button id="check">Check</button>
+
+    <p id="result"></p>
+
+    <script>
+        const age = document.getElementById("age");
+        const checkBtn = document.getElementById("check");
+        const result = document.getElementById("result");
+
+        let random = Math.ceil(Math.random() * 50);
+
+        checkBtn.onclick = function () {
+            let ageInput = Number(age.value);
+
+            if (ageInput > random) {
+                result.style.color = "orange";
+                result.textContent = "Age is too high 😅 Try again!";
+            }
+            else if (ageInput < random) {
+                result.style.color = "yellow";
+                result.textContent = "Age is too low 🤏 Try again!";
+            }
+            else {
+                result.style.color = "lightgreen";
+                result.textContent = "🎉 You guessed correctly!";
+            }
+        }
+    </script>
+
+</body>
+</html>
